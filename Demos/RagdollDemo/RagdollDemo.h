@@ -21,6 +21,7 @@ Written by: Marten Svanfeldt
 
 #include "GlutDemoApplication.h"
 #include "LinearMath/btAlignedObjectArray.h"
+#include "BulletDynamics/ConstraintSolver/btHingeConstraint.h"
 class btBroadphaseInterface;
 class btCollisionShape;
 class btOverlappingPairCache;

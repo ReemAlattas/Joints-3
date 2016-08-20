@@ -25,6 +25,8 @@ GlutDemoApplication.h
 /Users/reemalattas/Downloads/joints-3/Demos/RagdollDemo/GlutDemoApplication.h
 LinearMath/btAlignedObjectArray.h
 /Users/reemalattas/Downloads/joints-3/Demos/RagdollDemo/LinearMath/btAlignedObjectArray.h
+BulletDynamics/ConstraintSolver/btHingeConstraint.h
+/Users/reemalattas/Downloads/joints-3/Demos/RagdollDemo/BulletDynamics/ConstraintSolver/btHingeConstraint.h
 
 /Users/reemalattas/Downloads/joints-3/Demos/RagdollDemo/main.cpp
 RagdollDemo.h

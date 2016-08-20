@@ -412,7 +412,7 @@ void RagdollDemo::clientMoveAndDisplay()
 	if (ms > minFPS)
 		ms = minFPS;
 
-	if (m_dynamicsWorld)
+	if (!pause)
 	{
 		m_dynamicsWorld->stepSimulation(ms / 1000000.f);
 		

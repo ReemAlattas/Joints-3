@@ -501,7 +501,28 @@ void	RagdollDemo::exitPhysics()
 	
 }
 
-
+void RagdollDemo::CreateBox(int index, double x, double y, double z, double length, double width, double height)
+{
+    geom[index] = new btBoxShape(btVector3(width, height, length));
+    
+    //btDefaultMotionState* motionstate = new btDefaultMotionState();
+    btDefaultMotionState* motionstate = new btDefaultMotionState(btTransform(
+                                                                             btQuaternion(0, 0, 0, 1),
+                                                                             btVector3(x, y, z)
+                                                                             ));
+    
+    btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(
+                                                         1.0,                  // mass, in kg. 0 -> Static object, will never move.
+                                                         motionstate,
+                                                         geom[index],  // collision shape of body
+                                                         btVector3(0,0,0)    // local inertia
+                                                         );
+    
+    body[index] = new btRigidBody(rigidBodyCI);
+    
+    m_dynamicsWorld->addRigidBody(body[index]);
+    
+}
 
 
 

@@ -464,7 +464,7 @@ void RagdollDemo::keyboardCallback(unsigned char key, int x, int y)
 
 void	RagdollDemo::exitPhysics()
 {
-    
+    DeleteObject(0);
 
 	int i;
 

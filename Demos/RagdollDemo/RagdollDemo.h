@@ -48,6 +48,9 @@ class RagdollDemo : public GlutDemoApplication
     btRigidBody*         body[9]; // one main body, 4x2 leg segments
     btCollisionShape* geom[9];
     bool pause;
+    
+    btHingeConstraint* joints[8];
+    bool oneStep;
 
 public:
 	void initPhysics();

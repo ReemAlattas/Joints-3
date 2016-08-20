@@ -75,6 +75,8 @@ public:
     
     void CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, int angle);
     
+    void CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az);
+    
     void DeleteObject(int index);
 
 	static DemoApplication* Create()

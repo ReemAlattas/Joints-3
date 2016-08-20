@@ -571,6 +571,9 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
     btVector3 p(x, y, z);
     btVector3 a(ax, ay, az);
     
+    btVector3 p1 = PointWorldToLocal(body1, p);
+    btVector3 p2 = PointWorldToLocal(body2, p);
+    
 }
 
 void RagdollDemo::DeleteObject(int index)

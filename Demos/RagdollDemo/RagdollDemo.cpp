@@ -568,6 +568,8 @@ void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double
 
 void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az)
 {
+    btVector3 p(x, y, z);
+    btVector3 a(ax, ay, az);
     
 }
 

@@ -70,6 +70,8 @@ public:
     void CreateBox(int index, double x, double y, double z, double length, double width, double height);
     
     void CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, int angle);
+    
+    void DeleteObject(int index);
 
 	static DemoApplication* Create()
 	{

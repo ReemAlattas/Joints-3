@@ -453,6 +453,11 @@ void RagdollDemo::keyboardCallback(unsigned char key, int x, int y)
 		spawnRagdoll(startOffset);
 		break;
 		}
+        case 'p':
+        {
+            pause = !pause;
+            break;
+        }
 	default:
 		DemoApplication::keyboardCallback(key, x, y);
 	}

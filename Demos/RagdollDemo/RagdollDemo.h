@@ -78,7 +78,7 @@ public:
     
     void CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, int angle);
     
-    void RagdollDemo::CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, int angle);
+    void CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, int angle);
     
     void CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az);
     

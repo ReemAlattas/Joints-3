@@ -391,6 +391,8 @@ void RagdollDemo::initPhysics()
     CreateCylinder(6, -3., 0., 0., 0.2, 1., -55); // Create Leg 6
     CreateCylinder(7, 0., 0., 3., 0.2, 1., -55); // Create Leg 7
     CreateCylinder(8, 0., 0., -3., 0.2, 1., -55); // Create Leg 8
+    
+    CreateHinge(0, 1,5, 1.5, 1.0, 0.0, 0,0,1)
 
 	clientResetScene();		
 }

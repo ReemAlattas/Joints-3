@@ -85,6 +85,13 @@ public:
         return local1 * p;
     }
     
+    btVector3 AxisWorldToLocal(int index, btVector3 &a) {
+        btTransform local1 = body[index]->getCenterOfMassTransform().inverse();
+        btVector3 zero(0,0,0);
+        local1.setOrigin(zero);
+        return local1 * a;
+    }
+    
     void DeleteObject(int index);
     
 	static DemoApplication* Create()

@@ -566,24 +566,6 @@ void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double
     m_dynamicsWorld->addRigidBody(body[index]);
 }
 
-void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az)
-{
-    btVector3 p(x, y, z);
-    btVector3 a(ax, ay, az);
-    
-    btVector3 p1 = PointWorldToLocal(body1, p);
-    btVector3 p2 = PointWorldToLocal(body2, p);
-    
-    btVector3 a1 = AxisWorldToLocal(body1, a);
-    btVector3 a2 = AxisWorldToLocal(body2, a);
-    
-    // create
-    joints[index] = new btHingeConstraint(*body[body1], *body[body2],
-                                          p1, p2,
-                                          a1, a2, false);
-    
-}
-
 void RagdollDemo::DeleteObject(int index)
 {
     m_dynamicsWorld->removeRigidBody(body[index]);

@@ -21,7 +21,9 @@ Written by: Marten Svanfeldt
 
 #include "GlutDemoApplication.h"
 #include "LinearMath/btAlignedObjectArray.h"
+
 #include "BulletDynamics/ConstraintSolver/btHingeConstraint.h"
+
 class btBroadphaseInterface;
 class btCollisionShape;
 class btOverlappingPairCache;
@@ -51,8 +53,9 @@ class RagdollDemo : public GlutDemoApplication
     bool pause;
     
     btHingeConstraint* joints[8];
-    bool oneStep;
-
+    //bool oneStep;
+    
+    
 public:
 	void initPhysics();
 
@@ -75,22 +78,8 @@ public:
     
     void CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, int angle);
     
-    void CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az);
-    
     void DeleteObject(int index);
     
-    btVector3 PointWorldToLocal(int index, btVector3 &p) {
-        btTransform local1 = body[index]->getCenterOfMassTransform().inverse();
-        return local1 * p;
-    }
-    
-    btVector3 AxisWorldToLocal(int index, btVector3 &a) {
-        btTransform local1 = body[index]->getCenterOfMassTransform().inverse();
-        btVector3 zero(0,0,0);
-        local1.setOrigin(zero);
-        return local1 * a;
-    }
-
 	static DemoApplication* Create()
 	{
 		RagdollDemo* demo = new RagdollDemo();

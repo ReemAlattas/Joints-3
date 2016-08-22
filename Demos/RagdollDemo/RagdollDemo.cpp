@@ -383,16 +383,17 @@ void RagdollDemo::initPhysics()
     CreateBox(0, 0., 1., 0., 1., 1., 0.2); // Create the box
     // Step 16 + 17 - Assignment 5
     CreateCylinder(1, 2., 1., 0., 0.2, 1., -55); // Create Leg 1
-//    CreateCylinder(2, -2., 1., 0., 0.2, 1., -55); // Create Leg 2
+    CreateCylinder(2, -2., 1., 0., 0.2, 1., -55); // Create Leg 2
 //    CreateCylinder(3, 0., 1., 2., 0.2, 1., -55); // Create Leg 3
 //    CreateCylinder(4, 0., 1., -2., 0.2, 1., -55); // Create Leg 4
 //    // Create the bottom legs
-    CreateCylinder(5, 5, 1., 0., 0.2, 1., -55); // Create Leg 5
-//    CreateCylinder(6, -3., 0., 0., 0.2, 1., -55); // Create Leg 6
+    CreateCylinder(5, 4, 1., 0., 0.2, 1., -55); // Create Leg 5
+    CreateCylinder(6, -4., 1., 0., 0.2, 1., -55); // Create Leg 6
 //    CreateCylinder(7, 0., 0., 3., 0.2, 1., -55); // Create Leg 7
 //    CreateCylinder(8, 0., 0., -3., 0.2, 1., -55); // Create Leg 8
     
     CreateHinge(0, 1,5, 4,1,0, 0,0,1);
+    CreateHinge(0, 2,6, 4,1,0, 0,0,1);
 
 	clientResetScene();		
 }

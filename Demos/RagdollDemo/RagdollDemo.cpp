@@ -571,6 +571,30 @@ void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double
     m_dynamicsWorld->addRigidBody(body[index]);
 }
 
+void RagdollDemo::CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, int angle)
+{
+    geom[index] = new btCylinderShape(btVector3(diameter, sideLength, diameter));
+    
+    //btDefaultMotionState* motionstate = new btDefaultMotionState();
+    btDefaultMotionState* motionstate = new btDefaultMotionState(btTransform(
+                                                                             btQuaternion(btVector3(1, 0, 0), angle),
+                                                                             btVector3(x, y, z)
+                                                                             ));
+    
+    btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(
+                                                         1.0,                  // mass, in kg. 0 -> Static object, will never move.
+                                                         motionstate,
+                                                         geom[index],  // collision shape of body
+                                                         btVector3(0,0,0)    // local inertia
+                                                         );
+    
+    //glRotatef(90, 1, 0, 0);
+    
+    body[index] = new btRigidBody(rigidBodyCI);
+    
+    m_dynamicsWorld->addRigidBody(body[index]);
+}
+
 void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az)
 {
     btVector3 p(x, y, z);

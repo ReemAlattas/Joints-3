@@ -576,6 +576,11 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
     
     btVector3 a1 = AxisWorldToLocal(body1, a);
     btVector3 a2 = AxisWorldToLocal(body2, a);
+    
+    // create
+    joints[index] = new btHingeConstraint(*body[body1], *body[body2],
+                                          p1, p2,
+                                          a1, a2, false);
 }
 
 void RagdollDemo::DeleteObject(int index)

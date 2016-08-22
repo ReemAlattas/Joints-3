@@ -94,6 +94,8 @@ public:
     
     void DeleteObject(int index);
     
+    void DestroyHinge(int index);
+    
 	static DemoApplication* Create()
 	{
 		RagdollDemo* demo = new RagdollDemo();

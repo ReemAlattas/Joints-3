@@ -589,5 +589,8 @@ void RagdollDemo::DeleteObject(int index)
     delete body[index];
 }
 
-
+void RagdollDemo::DestroyHinge(int index)
+{
+    
+}
 

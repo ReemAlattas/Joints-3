@@ -591,6 +591,7 @@ void RagdollDemo::DeleteObject(int index)
 
 void RagdollDemo::DestroyHinge(int index)
 {
-    
+    //m_dynamicsWorld->removeConstraint(joints[index]);
+    delete joints[index];
 }
 

@@ -397,10 +397,10 @@ void RagdollDemo::initPhysics()
     CreateHinge(0, 3,7, 0,1,3.5, 0,1,0);
     CreateHinge(0, 4,8, 0,1,-3.5, 0,1,0);
     
-    CreateHinge(0, 0,1, 2.5,1,0, 0,0,1);
-    CreateHinge(0, 0,2, -2.5,1,0, 0,0,1);
-    CreateHinge(0, 0,3, 0,1,2.5, 0,1,0);
-    CreateHinge(0, 0,4, 0,1,-2.5, 0,1,0);
+    CreateHinge(0, 0,1, 1,0,0, 0,0,1);
+    CreateHinge(0, 0,2, -1,0,0, 0,0,1);
+    CreateHinge(0, 0,3, 0,0,1, 0,1,0);
+    CreateHinge(0, 0,4, 0,0,-1, 0,1,0);
 
 	clientResetScene();		
 }

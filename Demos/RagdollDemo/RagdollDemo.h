@@ -94,6 +94,14 @@ public:
         return local1 * a;
     }
     
+    btVector3 flipZY(btVector3 input) {
+        btScalar temp;
+        temp = input[1];
+        input[1] = input[2];
+        input[2] = temp;
+        return input;
+    }
+    
     void DeleteObject(int index);
     
     void DestroyHinge(int index);

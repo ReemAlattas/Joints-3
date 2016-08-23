@@ -387,10 +387,10 @@ void RagdollDemo::initPhysics()
     CreateCylinder2(3, 0., 1., 2., 0.2, 1., -40); // Create Leg 3
     CreateCylinder2(4, 0., 1., -2., 0.2, 1., 40); // Create Leg 4
     // Create the bottom legs
-    CreateCylinder(5, 4, 1., 0., 0.2, 1., -40); // Create Leg 5
-    CreateCylinder(6, -4, 1., 0., 0.2, 1., 40); // Create Leg 6
-    CreateCylinder2(7, 0., 1., 4, 0.2, 1., 40); // Create Leg 7
-    CreateCylinder2(8, 0., 1., -4, 0.2, 1., -40); // Create Leg 8
+    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., -40); // Create Leg 5
+    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., 40); // Create Leg 6
+    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., 40); // Create Leg 7
+    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., -40); // Create Leg 8
     
     CreateHinge(0, 1,5, 3.5,1,0, 0,0,1);
     CreateHinge(0, 2,6, -3.5,1,0, 0,0,1);

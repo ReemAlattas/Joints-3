@@ -433,10 +433,12 @@ void RagdollDemo::clientMoveAndDisplay()
 	if (ms > minFPS)
 		ms = minFPS;
 
-	if (!pause && oneStep)
-	{
-		m_dynamicsWorld->stepSimulation(ms / 1000000.f);
-		
+    if (!pause || (pause &&  oneStep))
+    {
+        ActuateJoint(0, -45., -90., ms / 1000000.f);
+        m_dynamicsWorld->stepSimulation(ms / 1000000.f);
+        oneStep = false;
+        
 		//optional but useful: debug drawing
 		m_dynamicsWorld->debugDrawWorld();
 

@@ -435,7 +435,8 @@ void RagdollDemo::clientMoveAndDisplay()
 
     if (!pause || (pause &&  oneStep))
     {
-        ActuateJoint(0, -45., -90., ms / 1000000.f);
+        //ActuateJoint(0, -45., -90., ms / 1000000.f);
+        ActuateJoint(0, -45., ms / 1000000.f);
         m_dynamicsWorld->stepSimulation(ms / 1000000.f);
         oneStep = false;
         
@@ -642,6 +643,11 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
     // Add to simulation
     m_dynamicsWorld->addConstraint( joints[index] , true );
     
+}
+
+void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double timeStep) {
+    joints[jointIndex]->enableMotor(true);
+    joints[jointIndex]->setMotorTarget(desiredAngle*3.14159/180., timeStep);
 }
 
 void RagdollDemo::DeleteObject(int index)

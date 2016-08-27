@@ -665,6 +665,7 @@ void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double timeS
 
 void RagdollDemo::ActuateJoint2(int jointIndex, double desiredAngle, double timeStep) {
     
+    int currentAngle = joints[jointIndex]->getHingeAngle();
     
 }
 

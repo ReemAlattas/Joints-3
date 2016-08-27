@@ -382,35 +382,35 @@ void RagdollDemo::initPhysics()
     
     CreateBox(0, 0., 1., 0., 1., 1., 0.2); // Create the box
     // Step 16 + 17 - Assignment 5
-//    CreateCylinder(1, 2., 1., 0., 0.2, 1., 40); // Create Leg 1
-//    CreateCylinder(2, -2., 1., 0., 0.2, 1., -40); // Create Leg 2
-//    CreateCylinder2(3, 0., 1., 2., 0.2, 1., -40); // Create Leg 3
-//    CreateCylinder2(4, 0., 1., -2., 0.2, 1., 40); // Create Leg 4
-//    // Create the bottom legs
-//    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., -40); // Create Leg 5
-//    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., 40); // Create Leg 6
-//    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., 40); // Create Leg 7
-//    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., -40); // Create Leg 8
+    CreateCylinder(1, 2., 1., 0., 0.2, 1., 40); // Create Leg 1
+    CreateCylinder(2, -2., 1., 0., 0.2, 1., -40); // Create Leg 2
+    CreateCylinder2(3, 0., 1., 2., 0.2, 1., -40); // Create Leg 3
+    CreateCylinder2(4, 0., 1., -2., 0.2, 1., 40); // Create Leg 4
+    // Create the bottom legs
+    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., -40); // Create Leg 5
+    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., 40); // Create Leg 6
+    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., 40); // Create Leg 7
+    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., -40); // Create Leg 8
     
-//    CreateHinge(0, 1,5, 3,1,0, 0,0,1);
-//    CreateHinge(0, 2,6, -3,1,0, 0,0,1);
-//    CreateHinge(0, 3,7, 0,1,3, 0,1,0);
-//    CreateHinge(0, 4,8, 0,1,-3, 0,1,0);
-//    
-//    CreateHinge(0, 0,1, 1,0,0, 0,0,1);
-//    CreateHinge(0, 0,2, -1,0,0, 0,0,1);
-//    CreateHinge(0, 0,3, 0,0,1, 0,1,0);
-//    CreateHinge(0, 0,4, 0,0,-1, 0,1,0);
+    CreateHinge(0, 1,5, 3,1,0, 0,0,1);
+    CreateHinge(1, 2,6, -3,1,0, 0,0,1);
+    CreateHinge(2, 3,7, 0,1,3, 0,1,0);
+    CreateHinge(3, 4,8, 0,1,-3, 0,1,0);
     
-        CreateCylinder(1, 2., 1., 0., 0.2, 1., -45); // Create Leg 1
-        CreateCylinder(2, -2., 1., 0., 0.2, 1., 45); // Create Leg 2
-        CreateCylinder2(3, 0., 1., 2., 0.2, 1., 45); // Create Leg 3
-        CreateCylinder2(4, 0., 1., -2., 0.2, 1., -45); // Create Leg 4
-        // Create the bottom legs
-        CreateCylinder(5, 3.9, 1., 0., 0.2, 1., 45); // Create Leg 5
-        CreateCylinder(6, -3.9, 1., 0., 0.2, 1., -45); // Create Leg 6
-        CreateCylinder2(7, 0., 1., 3.9, 0.2, 1., -45); // Create Leg 7
-        CreateCylinder2(8, 0., 1., -3.9, 0.2, 1., 45); // Create Leg 8
+    CreateHinge(4, 0,1, 1,0,0, 0,0,1);
+    CreateHinge(5, 0,2, -1,0,0, 0,0,1);
+    CreateHinge(6, 0,3, 0,0,1, 0,1,0);
+    CreateHinge(7, 0,4, 0,0,-1, 0,1,0);
+    
+//        CreateCylinder(1, 2., 1., 0., 0.2, 1., -45); // Create Leg 1
+//        CreateCylinder(2, -2., 1., 0., 0.2, 1., 45); // Create Leg 2
+//        CreateCylinder2(3, 0., 1., 2., 0.2, 1., 45); // Create Leg 3
+//        CreateCylinder2(4, 0., 1., -2., 0.2, 1., -45); // Create Leg 4
+//        // Create the bottom legs
+//        CreateCylinder(5, 3.9, 1., 0., 0.2, 1., 45); // Create Leg 5
+//        CreateCylinder(6, -3.9, 1., 0., 0.2, 1., -45); // Create Leg 6
+//        CreateCylinder2(7, 0., 1., 3.9, 0.2, 1., -45); // Create Leg 7
+//        CreateCylinder2(8, 0., 1., -3.9, 0.2, 1., 45); // Create Leg 8
 
 
 	clientResetScene();		
@@ -432,19 +432,32 @@ void RagdollDemo::clientMoveAndDisplay()
 	float minFPS = 1000000.f/60.f;
 	if (ms > minFPS)
 		ms = minFPS;
-
-    if (!pause || (pause &&  oneStep))
+    
+    if (!pause)
     {
-        //ActuateJoint(0, -45., -90., ms / 1000000.f);
-        ActuateJoint(0, -45., ms / 1000000.f);
-        m_dynamicsWorld->stepSimulation(ms / 1000000.f);
-        oneStep = false;
+        ActuateJoint(0, -55., ms / 1000000.f);
         
-		//optional but useful: debug drawing
-		m_dynamicsWorld->debugDrawWorld();
+        m_dynamicsWorld->stepSimulation(ms / 1000000.f);
+        
+        //optional but useful: debug drawing
+        m_dynamicsWorld->debugDrawWorld();
+        
+        
+    }
 
 
-	}
+//    if (!pause || (pause &&  oneStep))
+//    {
+//        //ActuateJoint(0, -45., -90., ms / 1000000.f);
+//        ActuateJoint(0, -45., ms / 1000000.f);
+//        m_dynamicsWorld->stepSimulation(ms / 1000000.f);
+//        oneStep = false;
+//        
+//		//optional but useful: debug drawing
+//		m_dynamicsWorld->debugDrawWorld();
+//
+//
+//	}
 
 	renderme(); 
 

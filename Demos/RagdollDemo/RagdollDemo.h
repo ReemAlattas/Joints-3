@@ -49,7 +49,7 @@ class RagdollDemo : public GlutDemoApplication
 	btDefaultCollisionConfiguration* m_collisionConfiguration;
     
     btHingeConstraint* joints[8];
-    bool oneStep;
+    //bool oneStep;
     
     
     btRigidBody*         body[9]; // one main body, 4x2 leg segments

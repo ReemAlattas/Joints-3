@@ -83,6 +83,7 @@ public:
     void CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az);
     
     void ActuateJoint(int jointIndex, double desiredAngle, double timeStep);
+    void ActuateJoint2(int jointIndex, double desiredAngle, double timeStep);
     
     btVector3 PointWorldToLocal(int index, btVector3 &p) {
         btTransform local1 = body[index]->getCenterOfMassTransform().inverse();

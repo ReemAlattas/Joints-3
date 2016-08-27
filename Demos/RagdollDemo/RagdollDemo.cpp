@@ -663,6 +663,11 @@ void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double timeS
     joints[jointIndex]->setMotorTarget(desiredAngle*3.14159/180., timeStep);
 }
 
+void RagdollDemo::ActuateJoint2(int jointIndex, double desiredAngle, double timeStep) {
+    
+    
+}
+
 void RagdollDemo::DeleteObject(int index)
 {
     m_dynamicsWorld->removeRigidBody(body[index]);

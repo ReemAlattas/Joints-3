@@ -496,7 +496,11 @@ void RagdollDemo::keyboardCallback(unsigned char key, int x, int y)
         case 'p':
         {
             pause = !pause;
-//            oneStep = !oneStep;
+            break;
+        }
+        case 'o':
+        {
+            oneStep = true;
             break;
         }
 	default:

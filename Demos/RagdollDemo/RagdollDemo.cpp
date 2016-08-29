@@ -382,15 +382,15 @@ void RagdollDemo::initPhysics()
     
     CreateBox(0, 0., 1., 0., 1., 1., 0.2); // Create the box
     // Step 16 + 17 - Assignment 5
-    CreateCylinder(1, 2., 1., 0., 0.2, 1., 40); // Create Leg 1
-    CreateCylinder(2, -2., 1., 0., 0.2, 1., -40); // Create Leg 2
-    CreateCylinder2(3, 0., 1., 2., 0.2, 1., -40); // Create Leg 3
-    CreateCylinder2(4, 0., 1., -2., 0.2, 1., 40); // Create Leg 4
+    CreateCylinder(1, 2., 1., 0., 0.2, 1., -0.6981317008); // Create Leg 1
+    CreateCylinder(2, -2., 1., 0., 0.2, 1., 0.6981317008); // Create Leg 2
+    CreateCylinder2(3, 0., 1., 2., 0.2, 1., 0.6981317008); // Create Leg 3
+    CreateCylinder2(4, 0., 1., -2., 0.2, 1., -0.6981317008); // Create Leg 4
     // Create the bottom legs
-    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., -40); // Create Leg 5
-    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., 40); // Create Leg 6
-    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., 40); // Create Leg 7
-    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., -40); // Create Leg 8
+    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., 0.6981317008); // Create Leg 5
+    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., -0.6981317008); // Create Leg 6
+    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., -0.6981317008); // Create Leg 7
+    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., 0.6981317008); // Create Leg 8
     
     CreateHinge(0, 1,5, 3,1,0, 0,0,1);
     CreateHinge(1, 2,6, -3,1,0, 0,0,1);
@@ -401,6 +401,8 @@ void RagdollDemo::initPhysics()
     CreateHinge(5, 0,2, -1,0,0, 0,0,1);
     CreateHinge(6, 0,3, 0,0,1, 0,1,0);
     CreateHinge(7, 0,4, 0,0,-1, 0,1,0);
+    
+    ActuateJoint2(1, 155, 10000);
     
 //        CreateCylinder(1, 2., 1., 0., 0.2, 1., -45); // Create Leg 1
 //        CreateCylinder(2, -2., 1., 0., 0.2, 1., 45); // Create Leg 2
@@ -433,11 +435,12 @@ void RagdollDemo::clientMoveAndDisplay()
 	if (ms > minFPS)
 		ms = minFPS;
     
-    if (!pause)
+    if (!pause || (pause &&  oneStep))
     {
-        ActuateJoint(0, -55., ms / 1000000.f);
+        //ActuateJoint(0, -55., ms / 1000000.f);
         
         m_dynamicsWorld->stepSimulation(ms / 1000000.f);
+        oneStep = false;
         
         //optional but useful: debug drawing
         m_dynamicsWorld->debugDrawWorld();
@@ -582,7 +585,7 @@ void RagdollDemo::CreateBox(int index, double x, double y, double z, double leng
     
 }
 
-void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, int angle)
+void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, double angle)
 {
     geom[index] = new btCylinderShape(btVector3(diameter, sideLength, diameter));
     
@@ -599,14 +602,14 @@ void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double
                                                          btVector3(0,0,0)    // local inertia
                                                          );
     
-    //glRotatef(90, 1, 0, 0);
+//    glRotatef(90, 1, 0, 0);
     
     body[index] = new btRigidBody(rigidBodyCI);
     
     m_dynamicsWorld->addRigidBody(body[index]);
 }
 
-void RagdollDemo::CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, int angle)
+void RagdollDemo::CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, double angle)
 {
     geom[index] = new btCylinderShape(btVector3(diameter, sideLength, diameter));
     
@@ -646,10 +649,10 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
                                           p1, p2,
                                           a1, a2, false);
     
-    if ( index==0 )
-        joints[index]->setLimit( (-45. + 90.)*3.14159/180., (45. + 90.)*3.14159/180.);
-    else
-        joints[index]->setLimit( (-45. + 0.)*3.14159/180., (45. + 0.)*3.14159/180.);
+//    if ( index==0 )
+//        joints[index]->setLimit( (-45. + 90.)*3.14159/180., (45. + 90.)*3.14159/180.);
+//    else
+//        joints[index]->setLimit( (-45. + 0.)*3.14159/180., (45. + 0.)*3.14159/180.);
     
 //    joints[index]->setLimit(-45.*3.14159/180., 45.*3.14159/180.);
     
@@ -658,15 +661,19 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
     
 }
 
-void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double timeStep) {
+void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double timeStep)
+{
     joints[jointIndex]->enableMotor(true);
     joints[jointIndex]->setMotorTarget(desiredAngle*3.14159/180., timeStep);
 }
 
-void RagdollDemo::ActuateJoint2(int jointIndex, double desiredAngle, double timeStep) {
+void RagdollDemo::ActuateJoint2(int jointIndex, double desiredAngle, double timeStep)
+{
+    float maxImpulse = 1.0;
     
     int currentAngle = joints[jointIndex]->getHingeAngle(); // Angle in Radiance
-    int velocity = joints[jointIndex]->enableAngularMotor(true, diff, maxImpulse);
+    int diff = desiredAngle - currentAngle;
+    joints[jointIndex]->enableAngularMotor(true, diff, maxImpulse);
     
 }
 

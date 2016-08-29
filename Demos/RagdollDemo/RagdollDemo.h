@@ -49,12 +49,11 @@ class RagdollDemo : public GlutDemoApplication
 	btDefaultCollisionConfiguration* m_collisionConfiguration;
     
     btHingeConstraint* joints[8];
-    //bool oneStep;
-    
+    bool oneStep = true;
     
     btRigidBody*         body[9]; // one main body, 4x2 leg segments
     btCollisionShape* geom[9];
-    bool pause;
+    bool pause = false;
     
 public:
 	void initPhysics();
@@ -76,9 +75,9 @@ public:
     
     void CreateBox(int index, double x, double y, double z, double length, double width, double height);
     
-    void CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, int angle);
+    void CreateCylinder(int index, double x, double y, double z, double diameter, double sideLength, double angle);
     
-    void CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, int angle);
+    void CreateCylinder2(int index, double x, double y, double z, double diameter, double sideLength, double angle);
     
     void CreateHinge(int index, int body1, int body2, double x, double y, double z, double ax, double ay, double az);
     

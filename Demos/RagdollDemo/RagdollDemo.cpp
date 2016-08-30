@@ -405,16 +405,6 @@ void RagdollDemo::initPhysics()
 
     
 //    ActuateJoint2(1, 155, 10000);
-    
-//        CreateCylinder(1, 2., 1., 0., 0.2, 1., -45); // Create Leg 1
-//        CreateCylinder(2, -2., 1., 0., 0.2, 1., 45); // Create Leg 2
-//        CreateCylinder2(3, 0., 1., 2., 0.2, 1., 45); // Create Leg 3
-//        CreateCylinder2(4, 0., 1., -2., 0.2, 1., -45); // Create Leg 4
-//        // Create the bottom legs
-//        CreateCylinder(5, 3.9, 1., 0., 0.2, 1., 45); // Create Leg 5
-//        CreateCylinder(6, -3.9, 1., 0., 0.2, 1., -45); // Create Leg 6
-//        CreateCylinder2(7, 0., 1., 3.9, 0.2, 1., -45); // Create Leg 7
-//        CreateCylinder2(8, 0., 1., -3.9, 0.2, 1., 45); // Create Leg 8
 
 
 	clientResetScene();		
@@ -655,12 +645,41 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
                                           p1, p2,
                                           a1, a2, false);
     
+    // set limits
+    joints[index]->setLimit( (-120. + 0.)*3.14159/180., (120. + 0.)*3.14159/180.);
+    
 //    if ( index==0 )
 //        joints[index]->setLimit( (-45. + 90.)*3.14159/180., (45. + 90.)*3.14159/180.);
+//    else if ( index==1 )
+//        joints[index]->setLimit( (-45. - 90.)*3.14159/180., (45. - 90.)*3.14159/180.);
 //    else
 //        joints[index]->setLimit( (-45. + 0.)*3.14159/180., (45. + 0.)*3.14159/180.);
     
-//    joints[index]->setLimit(-45.*3.14159/180., 45.*3.14159/180.);
+    
+//    switch(index) {
+//        case 0:
+//            joints[index]->setLimit( (-45. + 90.) * 3.14159/180., (45. + 90.) * 3.14159/180.);
+//            break;
+//        case 1:
+//            joints[index]->setLimit( (-45. + 90.) * 3.14159/180., (45. + 90.) * 3.14159/180.);
+//            break;
+//        case 2:
+//            joints[index]->setLimit( (-45. + 90.) * 3.14159/180., (45. + 90.) * 3.14159/180.);
+//            break;
+//        case 3:
+//            joints[index]->setLimit( (-45. + 90.) * 3.14159/180., (45. + 90.) * 3.14159/180.);
+//            break;
+//        case 4:
+//            joints[index]->setLimit( (-45. + 90.) * 3.14159/180., (45. + 90.) * 3.14159/180.);
+//            break;
+//        case 4:
+//            joints[index]->setLimit( (-45. + 90.) * 3.14159/180., (45. + 90.) * 3.14159/180.);
+//            break;
+//        default:
+////            joints[index]->setLimit( (-45. + 90.)*3.14159/180., (45. + 90.)*3.14159/180.);
+//            break;
+//    }
+    
     
     // Add to simulation
     m_dynamicsWorld->addConstraint( joints[index] , true );

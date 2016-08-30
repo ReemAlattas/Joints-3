@@ -392,15 +392,17 @@ void RagdollDemo::initPhysics()
     CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., -0.6981317008); // Create Leg 7
     CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., 0.6981317008); // Create Leg 8
     
-//    CreateHinge(0, 1,5, 3,1,0, 0,0,1);
-//    CreateHinge(1, 2,6, -3,1,0, 0,0,1);
-//    CreateHinge(2, 3,7, 0,1,3, 0,1,0);
-//    CreateHinge(3, 4,8, 0,1,-3, 0,1,0);
-//    
-//    CreateHinge(4, 0,1, 1,0,0, 0,0,1);
-//    CreateHinge(5, 0,2, -1,0,0, 0,0,1);
-//    CreateHinge(6, 0,3, 0,0,1, 0,1,0);
-//    CreateHinge(7, 0,4, 0,0,-1, 0,1,0);
+    CreateHinge(0, 1,5, 2.7,1.8,0, 0,0,1);
+    CreateHinge(1, 2,6, -2.7,1.8,0, 0,0,1);
+    CreateHinge(2, 3,7, 0,1.8,2.7, 1,0,0);
+    CreateHinge(3, 4,8, 0,1.8,-2.7, 1,0,0);
+
+    
+    CreateHinge(4, 0,1, 1.2,0,0, 0,0,1);
+    CreateHinge(5, 0,2, -1.2,0,0, 0,0,1);
+    CreateHinge(6, 0,3, 0,0,1.2, 1,0,0);
+    CreateHinge(7, 0,4, 0,0,-1.2, 1,0,0);
+
     
 //    ActuateJoint2(1, 155, 10000);
     
@@ -603,7 +605,7 @@ void RagdollDemo::CreateCylinder(int index, double x, double y, double z, double
                                                          1.0,                  // mass, in kg. 0 -> Static object, will never move.
                                                          motionstate,
                                                          geom[index],  // collision shape of body
-                                                         btVector3(0.5,0.5,0.5)    // local inertia
+                                                         btVector3(0,0,0.5)    // local inertia
                                                          );
     
 //    glRotatef(90, 1, 0, 0);
@@ -627,7 +629,7 @@ void RagdollDemo::CreateCylinder2(int index, double x, double y, double z, doubl
                                                          1.0,                  // mass, in kg. 0 -> Static object, will never move.
                                                          motionstate,
                                                          geom[index],  // collision shape of body
-                                                         btVector3(0.5,0.5,0.5)    // local inertia
+                                                         btVector3(0.5,0,0)    // local inertia
                                                          );
     
     //glRotatef(90, 1, 0, 0);

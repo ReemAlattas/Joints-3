@@ -685,18 +685,19 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
     
 }
 
-void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double timeStep)
+void RagdollDemo::ActuateJoint(int jointIndex, double desiredAngle, double jointOffset, double timeStep)
 {
     joints[jointIndex]->enableMotor(true);
+    joints[jointIndex]->setMaxMotorImpulse(1.0);
     joints[jointIndex]->setMotorTarget(desiredAngle*3.14159/180., timeStep);
 }
 
-void RagdollDemo::ActuateJoint2(int jointIndex, double desiredAngle, double timeStep)
+void RagdollDemo::ActuateJoint2(int jointIndex, double desiredAngle, double jointOffset, double timeStep)
 {
     float maxImpulse = 1.0;
     
-    int currentAngle = joints[jointIndex]->getHingeAngle(); // Angle in Radiance
-    int diff = desiredAngle - currentAngle;
+    int currentAngle = joints[jointIndex]->getHingeAngle(); // Angle in Radians
+    int diff = desiredAngle - currentAngle; // difference in Radians
     joints[jointIndex]->enableAngularMotor(true, diff, maxImpulse);
     
 }

@@ -380,7 +380,7 @@ void RagdollDemo::initPhysics()
 	startOffset.setValue(-1,0.5,0);
 	//spawnRagdoll(startOffset);
     
-    CreateBox(0, 0., 1., 0., 1., 1., 0.2); // Create the box
+    CreateBox(0, 0., 0., 0., 1., 1., 0.2); // Create the box
     // Step 16 + 17 - Assignment 5
     CreateCylinder(1, 2., 1., 0., 0.2, 1., -0.6981317008); // Create Leg 1
     CreateCylinder(2, -2., 1., 0., 0.2, 1., 0.6981317008); // Create Leg 2

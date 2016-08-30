@@ -429,8 +429,7 @@ void RagdollDemo::clientMoveAndDisplay()
     
     if (!pause || (pause &&  oneStep))
     {
-        //ActuateJoint(0, -55., ms / 1000000.f);
-        
+        ActuateJoint(0, -45., -90., ms / 1000000.f);
         m_dynamicsWorld->stepSimulation(ms / 1000000.f);
         oneStep = false;
         

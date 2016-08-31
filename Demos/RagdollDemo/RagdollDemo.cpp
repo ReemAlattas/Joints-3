@@ -382,25 +382,36 @@ void RagdollDemo::initPhysics()
     
     CreateBox(0, 0., 1., 0., 1., 1., 0.2); // Create the box
     // Step 16 + 17 - Assignment 5
-    CreateCylinder(1, 2., 1., 0., 0.2, 1., 40); // Create Leg 1
-    CreateCylinder(2, -2., 1., 0., 0.2, 1., -40); // Create Leg 2
-    CreateCylinder2(3, 0., 1., 2., 0.2, 1., -40); // Create Leg 3
-    CreateCylinder2(4, 0., 1., -2., 0.2, 1., 40); // Create Leg 4
-    // Create the bottom legs
-    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., -40); // Create Leg 5
-    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., 40); // Create Leg 6
-    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., 40); // Create Leg 7
-    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., -40); // Create Leg 8
+//    CreateCylinder(1, 2., 1., 0., 0.2, 1., 40); // Create Leg 1
+//    CreateCylinder(2, -2., 1., 0., 0.2, 1., -40); // Create Leg 2
+//    CreateCylinder2(3, 0., 1., 2., 0.2, 1., -40); // Create Leg 3
+//    CreateCylinder2(4, 0., 1., -2., 0.2, 1., 40); // Create Leg 4
+//    // Create the bottom legs
+//    CreateCylinder(5, 3.5, 1., 0., 0.2, 1., -40); // Create Leg 5
+//    CreateCylinder(6, -3.5, 1., 0., 0.2, 1., 40); // Create Leg 6
+//    CreateCylinder2(7, 0., 1., 3.5, 0.2, 1., 40); // Create Leg 7
+//    CreateCylinder2(8, 0., 1., -3.5, 0.2, 1., -40); // Create Leg 8
     
-    CreateHinge(0, 1,5, 3,1,0, 0,0,1);
-    CreateHinge(0, 2,6, -3,1,0, 0,0,1);
-    CreateHinge(0, 3,7, 0,1,3, 0,1,0);
-    CreateHinge(0, 4,8, 0,1,-3, 0,1,0);
+//    CreateHinge(0, 1,5, 3,1,0, 0,0,1);
+//    CreateHinge(0, 2,6, -3,1,0, 0,0,1);
+//    CreateHinge(0, 3,7, 0,1,3, 0,1,0);
+//    CreateHinge(0, 4,8, 0,1,-3, 0,1,0);
+//    
+//    CreateHinge(0, 0,1, 1,0,0, 0,0,1);
+//    CreateHinge(0, 0,2, -1,0,0, 0,0,1);
+//    CreateHinge(0, 0,3, 0,0,1, 0,1,0);
+//    CreateHinge(0, 0,4, 0,0,-1, 0,1,0);
     
-    CreateHinge(0, 0,1, 1,0,0, 0,0,1);
-    CreateHinge(0, 0,2, -1,0,0, 0,0,1);
-    CreateHinge(0, 0,3, 0,0,1, 0,1,0);
-    CreateHinge(0, 0,4, 0,0,-1, 0,1,0);
+        CreateCylinder(1, 2., 1., 0., 0.2, 1., -45); // Create Leg 1
+        CreateCylinder(2, -2., 1., 0., 0.2, 1., 45); // Create Leg 2
+        CreateCylinder2(3, 0., 1., 2., 0.2, 1., 45); // Create Leg 3
+        CreateCylinder2(4, 0., 1., -2., 0.2, 1., -45); // Create Leg 4
+        // Create the bottom legs
+        CreateCylinder(5, 3.9, 1., 0., 0.2, 1., 45); // Create Leg 5
+        CreateCylinder(6, -3.9, 1., 0., 0.2, 1., -45); // Create Leg 6
+        CreateCylinder2(7, 0., 1., 3.9, 0.2, 1., -45); // Create Leg 7
+        CreateCylinder2(8, 0., 1., -3.9, 0.2, 1., 45); // Create Leg 8
+
 
 	clientResetScene();		
 }
@@ -618,7 +629,12 @@ void RagdollDemo::CreateHinge(int index, int body1, int body2, double x, double 
                                           p1, p2,
                                           a1, a2, false);
     
-    joints[index]->setLimit(-45.*3.14159/180., 45.*3.14159/180.);
+    if ( index==0 )
+        joints[index]->setLimit( (-45. + 90.)*3.14159/180., (45. + 90.)*3.14159/180.);
+    else
+        joints[index]->setLimit( (-45. + 0.)*3.14159/180., (45. + 0.)*3.14159/180.);
+    
+//    joints[index]->setLimit(-45.*3.14159/180., 45.*3.14159/180.);
     
     // Add to simulation
     m_dynamicsWorld->addConstraint( joints[index] , true );

@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq libMiniCL.a  CMakeFiles/MiniCL.dir/MiniCL.o CMakeFiles/MiniCL.dir/MiniCLTaskScheduler.o CMakeFiles/MiniCL.dir/MiniCLTask/MiniCLTask.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libMiniCL.a

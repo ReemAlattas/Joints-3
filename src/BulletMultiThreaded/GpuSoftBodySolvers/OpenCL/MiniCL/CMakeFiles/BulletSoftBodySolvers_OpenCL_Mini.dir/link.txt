@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq libBulletSoftBodySolvers_OpenCL_Mini.a  CMakeFiles/BulletSoftBodySolvers_OpenCL_Mini.dir/__/btSoftBodySolver_OpenCL.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libBulletSoftBodySolvers_OpenCL_Mini.a
